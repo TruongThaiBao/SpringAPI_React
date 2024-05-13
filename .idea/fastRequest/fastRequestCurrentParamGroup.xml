@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="fastRequestCurrentParamGroup">
-    <option name="className" value="com.bao.api.controller.ProductController" />
-    <option name="filePath" value="/.fastRequest/collections/Root/api/ProductController~getAllProducts.rapi" />
-    <option name="method" value="getAllProducts" />
-    <option name="methodDescription" value="getAllProducts" />
+    <option name="className" value="com.bao.api.controller.FileController" />
+    <option name="filePath" value="" />
+    <option name="method" value="getFile" />
     <option name="module" value="api" />
-    <option name="originUrl" value="/api/products/" />
+    <option name="originUrl" value="/api/file/image/{filename}" />
+    <option name="pathParamMap">
+      <map>
+        <entry key="fileName">
+          <value>
+            <Object />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="responseParamMap">
       <map>
         <entry key="return">
@@ -16,8 +24,8 @@
         </entry>
       </map>
     </option>
-    <option name="returnDocument" value="{&quot;status&quot;:{},&quot;body&quot;:{}}" />
-    <option name="tempId" value="" />
-    <option name="url" value="/api/products/1" />
+    <option name="returnDocument" value="[{&quot;status&quot;:{},&quot;body&quot;:{}}]" />
+    <option name="tempId" value="api_com.bao.api.controller.ProductController.getAllProducts" />
+    <option name="url" value="/api/file/image/{filename}" />
   </component>
 </project>

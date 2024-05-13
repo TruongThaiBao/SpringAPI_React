@@ -3,7 +3,8 @@ import "./App.css";
 import Catalog from "./feature/Catalog";
 import { Product } from "./model/Product";
 import axios from "axios";
-import Navbar from "./layout/Navbar";
+import BasicNavbar from "./layout/BasicNavbar";
+import { Container } from "react-bootstrap";
 
 const initialProducts: Product[] = [];
 
@@ -26,18 +27,16 @@ function App() {
     }
     fetchProducts();
   })
+  
 
   return (
     <>
-      <Navbar></Navbar>
+      <BasicNavbar></BasicNavbar>
+      <Container>
+      <Catalog products={products}></Catalog>
 
-      <div className="row">
-        {products.map((product) => (
-          <div key={product.id} className="col-md-3">
-            <Catalog product={product}></Catalog>
-          </div>
-        ))}
-      </div>
+      </Container>
+      
     </>
     
   );

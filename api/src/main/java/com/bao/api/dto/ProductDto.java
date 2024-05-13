@@ -24,4 +24,5 @@ public class ProductDto {
     String brand;
 
     String categoryName;
+
 }

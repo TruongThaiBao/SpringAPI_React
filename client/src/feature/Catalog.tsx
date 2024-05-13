@@ -1,24 +1,23 @@
-import { Button, Card } from "react-bootstrap";
 import { Product } from "../model/Product";
-
+import CatalogItem from "./CatalogItem";
 
 type CatalogProps = {
-    product: Product
-  }
-  
-  function Catalog({ product }: CatalogProps) {
-    return (
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="../../public/default-image.png" />
-        <Card.Body>
-          <Card.Title>{product.name}</Card.Title>
-          {/* <Card.Text>{product.description}</Card.Text> */}
-          <Card.Subtitle>{product.unitPrice}</Card.Subtitle>
-          <Card.Subtitle>Stock: {product.unitsInStock}</Card.Subtitle>
-          <Button variant="success">View</Button>
-        </Card.Body>
-      </Card>
-    )
-  }
-  
-  export default Catalog
+  products: Product[];
+};
+
+function Catalog({ products }: CatalogProps) {
+  return (
+    <>
+      <div className="row">
+        {products.map((product) => (
+            
+          <div key={product.id} className="col-md-3">
+            <CatalogItem product={product}></CatalogItem>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+export default Catalog;
