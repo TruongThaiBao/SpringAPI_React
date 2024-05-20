@@ -9,9 +9,9 @@ function Catalog({ products }: CatalogProps) {
   return (
     <>
       <div className="row">
-        {products.map((product) => (
+        {products.map((product, index) => (
             
-          <div key={product.id} className="col-md-3">
+          <div key={product.id ?? index} className="col-md-3">
             <CatalogItem product={product}></CatalogItem>
           </div>
         ))}
