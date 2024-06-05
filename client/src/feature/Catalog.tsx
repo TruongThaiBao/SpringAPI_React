@@ -1,13 +1,36 @@
+import { Container } from "react-bootstrap";
 import { Product } from "../model/Product";
 import CatalogItem from "./CatalogItem";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import LoadingComponent from "../layout/LoadingComponent";
 
-type CatalogProps = {
-  products: Product[];
-};
 
-function Catalog({ products }: CatalogProps) {
+const initialProducts: Product[] = [];
+
+function Catalog() {
+  const [products, setProducts] = useState(initialProducts);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const res = await axios.get<Product[]>('/api/products');
+      const data = res.data;
+
+      setProducts(data);
+      setLoading(false);
+    }
+    fetchProducts();
+  }, [])
+
+  if (loading)
+    return <LoadingComponent></LoadingComponent>
+
   return (
     <>
+    <Container>
+      
       <div className="row">
         {products.map((product, index) => (
             
@@ -16,6 +39,7 @@ function Catalog({ products }: CatalogProps) {
           </div>
         ))}
       </div>
+    </Container>
     </>
   );
 }

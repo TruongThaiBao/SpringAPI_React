@@ -10,5 +10,6 @@ public interface ProductMapper {
     @Mapping(target = "categoryName", source = "category.categoryName")
     ProductDto convertToProductDto(Product product);
 
+    @Mapping(target = "category", ignore = true)
     Product convertToProduct(ProductDto productDto);
 }

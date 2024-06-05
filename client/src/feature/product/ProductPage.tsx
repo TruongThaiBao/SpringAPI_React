@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductForm from "./ProductForm";
 import { Product } from "../../model/Product";
 import axios from "axios";
-import { Table } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 
 const initialProducts: Product[] = [];
 
@@ -25,7 +25,9 @@ const ProductPage = () => {
 
   return (
     <>
-    <ProductForm onAddProduct={addProduct}></ProductForm>
+      <Container className="mt-3">
+        <ProductForm onAddProduct={addProduct}></ProductForm>
+      </Container>
 
       <Table striped bordered hover>
         <thead>

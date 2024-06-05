@@ -1,47 +1,72 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import {
+  AppBar,
+  Badge,
+  Box,
+  IconButton,
+  List,
+  ListItem,
+  Switch,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { Link, NavLink } from "react-router-dom";
+import { ShoppingCart } from "@mui/icons-material";
 
 const midLinks = [
-  {title: 'catalog', path: "/catalog"},
-  {title: 'about', path: "/about"},
-  {title: 'contact', path: "/contact"},
-  {title: 'manage-product', path: "/manage-product"},
+  { title: "catalog", path: "/catalog" },
+  { title: "about", path: "/about" },
+  { title: "contact", path: "/contact" },
+  { title: "product", path: "/manage-product" },
 ];
 
 const rightLinks = [
-  {title: 'login', path: "/login"},
-  {title: 'register', path: "/register"},
+  { title: "login", path: "/login" },
+  { title: "register", path: "/register" },
 ];
 
 function BasicNavbar() {
   return (
-    <Navbar expand="lg" className="bg-primary">
-      <Container>
-        <Navbar.Brand href="/">My Shop</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="catalog">Catalog</Nav.Link>
-            <Nav.Link href="/manage-product">Products</Nav.Link>
-            <Nav.Link href="about">About</Nav.Link>
-            <Nav.Link href="contact">Contact</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <AppBar position="static">
+      <Toolbar sx={{display: "flex", justifyContent: "space-evenly"}}>
+        {/* <Link to={"/"} className="nav-link fw-bold fs-4">My Shop</Link> */}
+        <Typography variant="h6"
+                  component={NavLink}
+                  to={"/"}
+                  sx={{color:"inherit", textDecoration: "none", fontSize: "1.5em"}}>My Shop</Typography>
+
+        <List sx={{ display: "flex" }}>
+          {midLinks.map(({ title, path }) => (
+            <ListItem key={path} component={NavLink} to={path} sx={{color: "inherit"}}>
+              {title.toUpperCase()}
+            </ListItem>
+          ))}
+        </List>
+        
+        <Box sx={{display: "flex"}}>
+
+        <IconButton>
+          <Badge badgeContent={4} color="warning">
+            <ShoppingCart/>
+          </Badge>
+        </IconButton>
+
+        <List sx={{ display: "flex"}}>
+          {rightLinks.map(({ title, path }) => (
+            <ListItem key={path} component={NavLink} to={path}>
+              {title.toUpperCase()}
+            </ListItem>
+          ))}
+        </List>
+        </Box>
+
+
+      </Toolbar>
+    </AppBar>
   );
 }
 
